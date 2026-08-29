@@ -1,22 +1,26 @@
-name: Python Workload Test
+name: Python Workload
 
 on:
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
 
 jobs:
   workload:
+    name: Workload 60 Seconds
     runs-on: ubuntu-latest
-
     timeout-minutes: 5
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      
-      - name: Run workload
+
+      - name: Run Workload 60 Seconds
         run: python workload.py

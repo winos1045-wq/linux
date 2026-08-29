@@ -1,4 +1,4 @@
-name: Remote SSHX Session
+name: python 
 
 on:
   workflow_dispatch: # يتيح لك تشغيل الـ Workflow يدوياً بزر Run workflow

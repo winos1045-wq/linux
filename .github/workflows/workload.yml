@@ -1,7 +1,12 @@
 name: Custom FastAPI Web Terminal
 
+# التشغيل التلقائي عند أي تحديث (push) على الفرح الرئيسي main أو master
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # يتيح لك أيضاً تشغيله يدوياً إن أردت
 
 jobs:
   run-terminal:
